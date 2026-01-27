@@ -2,11 +2,6 @@
   "name": "sanrisan-frontend",
   "version": "0.1.0",
   "private": true,
-
-  "engines": {
-    "node": ">=18.x"
-  },
-
   "dependencies": {
     "@radix-ui/react-toggle": "^1.1.6",
     "@radix-ui/react-toggle-group": "^1.1.7",
@@ -22,8 +17,8 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.562.0",
     "next-themes": "^0.4.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-day-picker": "8.10.1",
     "react-hook-form": "^7.56.2",
     "react-resizable-panels": "^3.0.1",
@@ -36,8 +31,10 @@
     "vaul": "^1.1.2",
     "zod": "^3.24.4"
   },
-
-  "scripts": {
+"engines": {
+  "node": "18.x"
+},
+"scripts": {
   "preinstall": "npm config set legacy-peer-deps true",
   "build": "craco build"
 },
@@ -73,3 +70,4 @@
     "typescript": "^5.9.3"
   }
 }
+  
