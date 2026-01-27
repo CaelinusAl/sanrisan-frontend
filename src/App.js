@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Navbar } from './components/layout/Navbar';function Home() {
+import { Footer } from "./components/layout/Footer";
   return <div>Ask Sanrı Home</div>;
 }
 
