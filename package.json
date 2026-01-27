@@ -4,20 +4,19 @@
   "private": true,
 
   "engines": {
-    "node": ">=18"
+    "node": "24.x"
   },
 
   "scripts": {
     "preinstall": "npm config set legacy-peer-deps true",
-    "start": "craco start",
-    "build": "craco build"
+    "build": "craco build",
+    "start": "craco start"
   },
 
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "@craco/craco": "^7.1.0",
     "react-day-picker": "8.10.1",
     "date-fns": "^3.6.0"
   }
