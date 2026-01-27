@@ -4,7 +4,7 @@
   "private": true,
 
   "engines": {
-    "node": ">=18"
+    "node": ">=18.x"
   },
 
   "dependencies": {
@@ -38,11 +38,9 @@
   },
 
   "scripts": {
-    "preinstall": "npm config set legacy-peer-deps true",
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test"
-  },
+  "preinstall": "npm config set legacy-peer-deps true",
+  "build": "craco build"
+},
 
   "browserslist": {
     "production": [
