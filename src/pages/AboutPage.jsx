@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { BookOpen, Sparkles, Compass, Brain, Waves } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { Button } from '../components/ui/button";
+import { Card, CardContent } from '../components/ui/card";
+import { Separator } from '../components/ui/separator";
+import { useLanguage } from '../contexts/LanguageContext";
 
 const AboutPage = () => {
   const { language, t } = useLanguage();

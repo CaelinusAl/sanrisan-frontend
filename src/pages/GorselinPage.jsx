@@ -5,16 +5,16 @@ import {
   ChevronDown, Download, Share2, Crown, Loader2,
   Eye, MessageCircle, Heart, RefreshCw
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Switch } from '@/components/ui/switch';
-import { Label } from '@/components/ui/label';
+import { Button } from '../components/ui/button';
+import { Card, CardContent } from '../components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Textarea } from '../components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
+import { Switch } from '../components/ui/switch';
+import { Label } from '../components/ui/label';
 import { toast } from 'sonner';
 import axios from 'axios';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 

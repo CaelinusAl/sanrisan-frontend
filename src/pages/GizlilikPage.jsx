@@ -1,7 +1,7 @@
 // CAELINUS AI - Gizlilik Politikası / Privacy Policy
 // KVKK ve GDPR uyumlu
 
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Shield, Database, Trash2, Download, Mail } from 'lucide-react';

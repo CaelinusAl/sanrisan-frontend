@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Crown } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
-import SplashScreen from '@/components/SplashScreen';
+import { useLanguage } from '../contexts/LanguageContext';
+import SplashScreen from '../components/SplashScreen';
 
 // Sacred Section Card Component
 const SacredCard = ({ section, isMain, isNew, onClick, delay, t }) => {

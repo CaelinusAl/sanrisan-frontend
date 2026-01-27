@@ -4,13 +4,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Crown, Sparkles, Check, X, Star, Zap, Eye, BookOpen, Heart, Gift } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { Input } from '@/components/ui/input';
-import { usePremium, PLAN_TYPES } from '@/contexts/PremiumContext';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { Button } from "../components/ui/button";
+import { Separator } from '../components/ui/separator';
+import { Input } from '../components/ui/input';
+import { usePremium, PLAN_TYPES } from '../contexts/PremiumContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import { toast } from 'sonner';
 
 const SubscriptionPage = () => {

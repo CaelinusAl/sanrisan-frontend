@@ -4,8 +4,8 @@ import {
   Play, Pause, X, Volume2, VolumeX, 
   RotateCcw, Crown, Loader2, Clock, Waves
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Slider } from '@/components/ui/slider';
+import { Button } from 'ui/button';
+import { Slider } from 'ui/slider';
 import { toast } from 'sonner';
 import axios from 'axios';
 

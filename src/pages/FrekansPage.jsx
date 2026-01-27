@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
-import { getRandomFrekansText, getFrekansTexts } from "@/data/bilinc-frekans";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { getRandomFrekansText, getFrekansTexts } from '../data/bilinc-frekans";
+import { useLanguage } from '../contexts/LanguageContext";
 
 const FrekansPage = () => {
   const { t, language } = useLanguage();

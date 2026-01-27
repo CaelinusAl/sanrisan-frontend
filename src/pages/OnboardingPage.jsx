@@ -4,10 +4,10 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useAuth } from '@/contexts/AuthContext';
-import { useLanguage } from '@/contexts/LanguageContext';
-import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
+import { useAuth } from '../contexts/AuthContext';
+import { useLanguage } from '../contexts/LanguageContext';
+import { Button } from '../components/ui/button';
+import { Checkbox } from '../components/ui/checkbox';
 import { toast } from 'sonner';
 import { ArrowRight, ArrowLeft, Check } from 'lucide-react';
 

@@ -1,10 +1,10 @@
 import "@/App.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useState, useEffect, lazy, Suspense } from "react";
-import { Toaster } from "@/components/ui/sonner";
-import { LanguageProvider } from "@/contexts/LanguageContext";
-import { AuthProvider } from "@/contexts/AuthContext";
-import { PremiumProvider } from "@/contexts/PremiumContext";
+import { Toaster } from 'ui/sonner";
+import { LanguageProvider } from 'LanguageContext";
+import { AuthProvider } from 'AuthContext";
+import { PremiumProvider } from 'PremiumContext";
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import("@/pages/HomePage"));
@@ -37,13 +37,13 @@ const RitualBuilder = lazy(() => import("@/pages/admin/RitualBuilder"));
 const VisualPresetsPage = lazy(() => import("@/pages/admin/VisualPresetsPage"));
 
 // Components
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import AdminLayout from "@/components/admin/AdminLayout";
-import { AdminProvider, useAdmin } from "@/contexts/AdminContext";
-import { UpgradeModal } from "@/components/premium/PremiumComponents";
-import { UpgradeFlowModal } from "@/components/premium/UpgradeFlowModal";
-import { useUpgradeFlow } from "@/hooks/useUpgradeFlow";
+import { Navbar } from 'layout/Navbar";
+import { Footer } from 'layout/Footer";
+import AdminLayout from 'admin/AdminLayout";
+import { AdminProvider, useAdmin } from 'AdminContext";
+import { UpgradeModal } from 'premium/PremiumComponents";
+import { UpgradeFlowModal } from 'premium/UpgradeFlowModal";
+import { useUpgradeFlow } from "./hooks/useUpgradeFlow";
 
 // Loading component
 const PageLoader = () => (

@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Moon, Sun, Menu, Crown, Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { Button } from 'ui/button";
+import { Sheet, SheetContent, SheetTrigger } from 'ui/sheet";
+import { useLanguage } from 'LanguageContext";
 
 export const Navbar = ({ isDark, toggleTheme }) => {
   const [scrolled, setScrolled] = useState(false);

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { Separator } from "@/components/ui/separator";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { Separator } from 'ui/separator";
+import { useLanguage } from 'LanguageContext";
 
 export const Footer = () => {
   const { language, t } = useLanguage();
