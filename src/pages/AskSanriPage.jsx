@@ -17,7 +17,6 @@ export default function AskSanriPage() {
     },
   ]);
 
-  // ENV varsa backend'e gider, yoksa mock cevap üretir.
   const apiBase = useMemo(() => process.env.REACT_APP_API_URL || "", []);
 
   async function handleSend() {
@@ -30,29 +29,31 @@ export default function AskSanriPage() {
 
     try {
       if (apiBase) {
-        // Backend hazır olduğunda burası çalışacak.
-        const res = await fetch(${apiBase}/ask, {
+          const res = await fetch(${apiBase}/ask, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ question: q }),
         });
 
-        if (!res.ok) throw new Error(API error: ${res.status});
+        if (!res.ok) {
+          throw new Error('API error: ${res.status});
+        }
+
         const data = await res.json();
 
         setMessages((m) => [
           ...m,
           {
             role: "assistant",
-            text: data?.answer || "(Boş cevap)",
+            text: data.answer || "(Boş cevap)",
             time: nowTime(),
           },
         ]);
       } else {
-        // Mock cevap (şimdilik)
-        const mock = `Soru alındı: “${q}”.
+        const mock = `Soru alındı: "${q}"
 
-Backend bağlanınca gerçek cevap burada akacak.`;
+        Backend bağlanınca gerçek cevap burada akacak.`;
+       
         await new Promise((r) => setTimeout(r, 500));
         setMessages((m) => [
           ...m,
@@ -60,12 +61,11 @@ Backend bağlanınca gerçek cevap burada akacak.`;
         ]);
       }
     } catch (e) {
-      const msg = e instanceof Error ? e.message : String(e);
       setMessages((m) => [
         ...m,
         {
           role: "assistant",
-          text: `Hata oldu: ${msg}
+          text: `Hata oldu: ${String(e.message || e)}
 
 (Şimdilik mock moduna devam edebiliriz.)`,
           time: nowTime(),
@@ -84,14 +84,7 @@ Backend bağlanınca gerçek cevap burada akacak.`;
   }
 
   return (
-    <div
-      style={{
-        padding: 24,
-        maxWidth: 900,
-        margin: "0 auto",
-        fontFamily: "system-ui",
-      }}
-    >
+    <div style={{ padding: 24, maxWidth: 900, margin: "0 auto", fontFamily: "system-ui" }}>
       <h2 style={{ margin: 0 }}>ASK SANRI</h2>
       <p style={{ marginTop: 8, opacity: 0.75 }}>
         Sorunu yaz. Enter = gönder, Shift+Enter = alt satır.
@@ -111,7 +104,7 @@ Backend bağlanınca gerçek cevap burada akacak.`;
         {messages.map((msg, i) => (
           <div key={i} style={{ marginBottom: 10 }}>
             <div style={{ fontSize: 12, opacity: 0.6 }}>
-              {String(msg.role).toUpperCase()} • {msg.time}
+              {msg.role.toUpperCase()} • {msg.time}
             </div>
             <div
               style={{
@@ -131,7 +124,6 @@ Backend bağlanınca gerçek cevap burada akacak.`;
             </div>
           </div>
         ))}
-
         {loading && (
           <div style={{ fontSize: 12, opacity: 0.6, marginTop: 10 }}>
             Yanıt hazırlanıyor…
