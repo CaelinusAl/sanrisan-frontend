@@ -1,7 +1,9 @@
 ﻿import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Footer } from "./components/layout/Footer";
 import docs from "./data/docs.json";
+import AskSanriPage from "./pages/AskSanriPage";
 
+<Route path="/ask" element={<AskSanriPage />} />
 function Home() {
   const { title, subtitle, status } = docs.home;
   return (
@@ -17,6 +19,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/ask" element={<AskSanriPage />} />
         <Route path="/" element={<Home />} />
       </Routes>
       <Footer />

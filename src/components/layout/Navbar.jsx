@@ -2,11 +2,16 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Moon, Sun, Menu, Crown, Globe } from "lucide-react";
-import { Button } from 'ui/button";
-import { Sheet, SheetContent, SheetTrigger } from 'ui/sheet";
-import { useLanguage } from 'LanguageContext";
 
+import { Button } from "../ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+
+import { useLanguage } from "../../contexts/LanguageContext";
 export const Navbar = ({ isDark, toggleTheme }) => {
+import { Navbar } from "./components/layout/Navbar";
+import { Footer } from "./components/layout/Footer";
+import AdminLayout from "./components/admin/AdminLayout";
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
@@ -39,10 +44,10 @@ export const Navbar = ({ isDark, toggleTheme }) => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "glass-navbar py-3"
-          : "bg-gradient-to-b from-background/80 to-transparent py-5"
-      }`}
+  scrolled
+    ? "glass-navbar py-3"
+    : "bg-gradient-to-b from-background/80 to-transparent py-5"
+}`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
