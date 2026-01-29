@@ -1,14 +1,16 @@
-﻿import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+﻿import { BrowserRouter } from "react-router-dom";
 import { Footer } from "./components/layout/Footer";
-  return <div>Ask Sanrı Home</div>;
-}
+import docs from "./data/docs.json";
 
 export default function App() {
   return (
     <BrowserRouter>
-  <Navbar />
-  <Routes>...</Routes>
-</BrowserRouter>
+      <div>
+        <h1>{docs.home.title}</h1>
+        <p>{docs.home.subtitle}</p>
+        <small>{docs.home.status}</small>
+      </div>
+      <Footer />
+    </BrowserRouter>
   );
 }
