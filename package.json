@@ -6,6 +6,7 @@
     "node": "20.x"
   },
   "scripts": {
+    "preinstall": "npm config set legacy-peer-deps true"
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
