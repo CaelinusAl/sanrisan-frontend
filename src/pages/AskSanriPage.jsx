@@ -70,7 +70,7 @@ Backend bağlanınca gerçek cevap burada akacak.`;
         ...m,
         {
           role: "assistant",
-          text: Hata oldu: '${e.message || e}',
+          text: 'Hata oldu: ${e.message || e}',
           time: nowTime(),
         },
       ]);
