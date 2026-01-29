@@ -1,13 +1,25 @@
-﻿import React from "react";
+﻿import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Footer } from "./components/layout/Footer";
+import docs from "./data/docs.json";
+
+function Home() {
+  const { title, subtitle, status } = docs.home;
+  return (
+    <div style={{ padding: 24, fontFamily: "system-ui" }}>
+      <h1 style={{ margin: 0 }}>{title}</h1>
+      <p style={{ marginTop: 8 }}>{subtitle}</p>
+      <p style={{ marginTop: 8, opacity: 0.8 }}>{status}</p>
+    </div>
+  );
+}
 
 export default function App() {
   return (
-    <div style={{ padding: 24, fontFamily: "Arial, sans-serif" }}>
-      <h1 style={{ margin: 0 }}>ASK SANRI</h1>
-      <p style={{ marginTop: 8 }}>Bilinçle sor, bilinçle cevap al.</p>
-      <p style={{ marginTop: 12, opacity: 0.8 }}>
-        Deploy başarılı. Şimdi modüller tek tek aktif ediliyor.
-      </p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
