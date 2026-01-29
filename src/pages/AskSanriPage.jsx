@@ -6,19 +6,14 @@ function nowTime() {
 }
 
 export default function AskSanriPage() {
-  
-}  const [input, setInput] = useState("");
+  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [messages, setMessages] = useState(() => [
-    {
-      role: "system",
-      text: "ASK SANRI hazır. Sorunu yaz; cevap akışı başlayacak.",
-      time: nowTime(),
-    },
+    { role: "system", text: "ASK SANRI hazır. Sorunu yaz; cevap akışı başlayacak.", time: nowTime() },
   ]);
 
-  const apiBase = useMemo(() => process.env.REACT_APP_API_URL || "", []);
+  const apiBase = useMemo(() => (process.env.REACT_APP_API_URL || "").trim(), []);
 
   async function handleSend() {
     const q = input.trim();
@@ -30,47 +25,28 @@ export default function AskSanriPage() {
 
     try {
       if (apiBase) {
-          const res = await fetch('${apiBase}/ask, {
+        const res = await fetch(${apiBase}/ask, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ question: q }),
         });
 
-        if (!res.ok) {
-          throw new Error('API error: ${res.status});
-        }
-
+        if (!res.ok) throw new Error(API error: ${res.status});
         const data = await res.json();
 
         setMessages((m) => [
           ...m,
-          {
-            role: "assistant",
-            text: data.answer || "(Boş cevap)",
-            time: nowTime(),
-          },
+          { role: "assistant", text: data.answer || "(Boş cevap)", time: nowTime() },
         ]);
       } else {
-        const mock = `Soru alındı: "${q}"
-
-        Backend bağlanınca gerçek cevap burada akacak.`;
-       
-        await new Promise((r) => setTimeout(r, 500));
-        setMessages((m) => [
-          ...m,
-          { role: "assistant", text: mock, time: nowTime() },
-        ]);
+        const mock = Soru alındı: “${q}”.\n\nBackend bağlanınca gerçek cevap burada akacak.;
+        await new Promise((r) => setTimeout(r, 400));
+        setMessages((m) => [...m, { role: "assistant", text: mock, time: nowTime() }]);
       }
     } catch (e) {
       setMessages((m) => [
         ...m,
-        {
-          role: "assistant",
-          text: `Hata oldu: ${String(e.message || e)}
-
-(Şimdilik mock moduna devam edebiliriz.)`,
-          time: nowTime(),
-        },
+        { role: "assistant", text: Hata oldu: ${String(e.message || e)}, time: nowTime() },
       ]);
     } finally {
       setLoading(false);
@@ -125,11 +101,7 @@ export default function AskSanriPage() {
             </div>
           </div>
         ))}
-        {loading && (
-          <div style={{ fontSize: 12, opacity: 0.6, marginTop: 10 }}>
-            Yanıt hazırlanıyor…
-          </div>
-        )}
+        {loading && <div style={{ fontSize: 12, opacity: 0.6, marginTop: 10 }}>Yanıt hazırlanıyor…</div>}
       </div>
 
       <div style={{ marginTop: 12, display: "flex", gap: 10 }}>
@@ -164,8 +136,7 @@ export default function AskSanriPage() {
       </div>
 
       <div style={{ marginTop: 10, fontSize: 12, opacity: 0.65 }}>
-        Backend bağlamak için: <code>REACT_APP_API_URL</code> env ekleyip{" "}
-        <code>/ask</code> endpoint’i açacağız.
+        Backend bağlamak için: <code>REACT_APP_API_URL</code> env ekleyip <code>/ask</code> endpoint’i açacağız.
       </div>
     </div>
   );
