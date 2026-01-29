@@ -39,7 +39,7 @@ export default function AskSanriPage() {
         });
 
         if (!res.ok) {
-          throw new Error(API error: ${res.status});
+          throw new Error('API error: ${res.status}');
         }
 
         const data = await res.json();
@@ -70,7 +70,7 @@ Backend bağlanınca gerçek cevap burada akacak.`;
         ...m,
         {
           role: "assistant",
-          text: Hata oldu: ${e.message || e},
+          text: Hata oldu: '${e.message || e}',
           time: nowTime(),
         },
       ]);
