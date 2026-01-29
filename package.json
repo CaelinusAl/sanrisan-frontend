@@ -2,27 +2,17 @@
   "name": "sanrisan-frontend",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "20.x"
-  },
-  "scripts": {
-    "preinstall": "npm config set legacy-peer-deps true"
-    "start": "react-scripts start",
-    "build": "react-scripts build"
-  },
   "dependencies": {
-    "@radix-ui/react-separator": "^1.1.8",
-    "ajv": "6.12.6",
-    "ajv-keywords": "3.5.2",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "date-fns": "^3.6.0",
     "react": "^18.2.0",
-    "react-day-picker": "8.10.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
-    "react-scripts": "5.0.1",
-    "tailwind-merge": "^3.4.0"
+    "react-scripts": "5.0.1"
+  },
+  "scripts": {
+    "lint": "eslint src --fix",
+    "format": "prettier --write \"src/*/.{js,jsx,json,css,md}\"",
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   },
   "browserslist": {
     "production": [
@@ -37,6 +27,9 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss-animate": "^1.0.7"
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "prettier": "^3.8.1"
   }
 }
