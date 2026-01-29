@@ -32,7 +32,7 @@ export default function AskSanriPage() {
 
     try {
       if (apiBase) {
-        const res = await fetch(${apiBase}/ask, {
+        const res = await fetch('${apiBase}/ask', {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ question: q }),
