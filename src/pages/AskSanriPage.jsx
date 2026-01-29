@@ -6,7 +6,8 @@ function nowTime() {
 }
 
 export default function AskSanriPage() {
-  const [input, setInput] = useState("");
+  
+}  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [messages, setMessages] = useState(() => [
