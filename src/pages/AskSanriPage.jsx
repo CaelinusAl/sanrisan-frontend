@@ -74,34 +74,34 @@ function modeLabel(mode) {
 /** Mock cevaplar */
 function mockAnswer(mode, q) {
   if (mode === "ayna_eylem") {
-    return (
-      Tamam. Şimdi 60 saniyelik netlik:\n +
-      1) Tek cümle hedef: (Ne istiyorum?)\n +
-      2) Tek cümle engel: (Neyi bırakmalıyım?)\n +
-      3) Tek küçük adım: (Bugün 10 dakikada ne yapabilirim?)\n\n +
-      Sorun: “${q}”
-    );
+    return `Tamam. Şimdi 60 saniyelik netlik:
+
+1) Tek cümle hedef: (Ne istiyorum?)
+2) Tek cümle engel: (Neyi bırakmalıyım?)
+3) Tek küçük adım: (Bugün 10 dakikada ne yapabilirim?)
+
+Sorun: “${q}”`;
   }
 
   if (mode === "ayna_derin") {
-    return (
-      Bu cümlede iki katman var:\n +
-      • His: Şu an bedenin ne söylüyor?\n +
-      • İhtiyaç: Aslında hangi güveni arıyorsun?\n\n +
-      Bir soru: “Bunu yaşarken kendime hangi eski rolü giydiriyorum?”\n\n +
-      Sorun: “${q}”
-    );
+    return `Bu cümlede iki katman var:
+
+* His: Şu an bedenin ne söylüyor?
+* İhtiyaç: Aslında hangi güveni arıyorsun?
+
+Bir soru:
+“Kendime hangi eski rolü giydiriyorum?”
+
+Sorun: “${q}”`;
   }
 
-  // ayna_sade
-  return (
-    Seni duydum.\n +
-    Şimdi sadece şu kadarını taşıyalım: “Şu an en çok neye ihtiyacım var?”\n\n +
-    Sorun: “${q}”
-  );
-}
+  return `Seni duydum.
 
-export default function AskSanriPage() {
+Şu an sadece bunu taşıyalım:
+“En çok neye ihtiyacım var?”
+
+Sorun: “${q}”`;
+}export default function AskSanriPage() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -130,14 +130,14 @@ export default function AskSanriPage() {
 
     try {
       if (apiBase) {
-        const res = await fetch(${apiBase}/ask, {
+        const res = await fetch('${apiBase}/ask', {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ question: q, mode }),
         });
 
         if (!res.ok) {
-          throw new Error(API error: ${res.status});
+          throw new Error('API error: ${res.status}');
         }
 
         const data = await res.json();
