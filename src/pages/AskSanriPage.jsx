@@ -9,11 +9,18 @@ export default function AskSanriPage() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const [messages, setMessages] = useState(() => [
-    { role: "system", text: "ASK SANRI hazır. Sorunu yaz; cevap akışı başlayacak.", time: nowTime() },
+  const [messages, setMessages] = useState([
+    {
+      role: "system",
+      text: "ASK SANRI hazır. Sorunu yaz; cevap akışı başlayacak.",
+      time: nowTime(),
+    },
   ]);
 
-  const apiBase = useMemo(() => (process.env.REACT_APP_API_URL || "").trim(), []);
+  const apiBase = useMemo(
+    () => process.env.REACT_APP_API_URL || "",
+    []
+  );
 
   async function handleSend() {
     const q = input.trim();
@@ -31,22 +38,41 @@ export default function AskSanriPage() {
           body: JSON.stringify({ question: q }),
         });
 
-        if (!res.ok) throw new Error(API error: ${res.status});
+        if (!res.ok) {
+          throw new Error(API error: ${res.status});
+        }
+
         const data = await res.json();
 
         setMessages((m) => [
           ...m,
-          { role: "assistant", text: data.answer || "(Boş cevap)", time: nowTime() },
+          {
+            role: "assistant",
+            text: data.answer || "(Boş cevap)",
+            time: nowTime(),
+          },
         ]);
       } else {
-        const mock = Soru alındı: “${q}”.\n\nBackend bağlanınca gerçek cevap burada akacak.;
-        await new Promise((r) => setTimeout(r, 400));
-        setMessages((m) => [...m, { role: "assistant", text: mock, time: nowTime() }]);
+        // Mock cevap
+        const mock = `Soru alındı: "${q}"
+
+Backend bağlanınca gerçek cevap burada akacak.`;
+
+        await new Promise((r) => setTimeout(r, 500));
+
+        setMessages((m) => [
+          ...m,
+          { role: "assistant", text: mock, time: nowTime() },
+        ]);
       }
     } catch (e) {
       setMessages((m) => [
         ...m,
-        { role: "assistant", text: Hata oldu: ${String(e.message || e)}, time: nowTime() },
+        {
+          role: "assistant",
+          text: Hata oldu: ${e.message || e},
+          time: nowTime(),
+        },
       ]);
     } finally {
       setLoading(false);
@@ -62,20 +88,19 @@ export default function AskSanriPage() {
 
   return (
     <div style={{ padding: 24, maxWidth: 900, margin: "0 auto", fontFamily: "system-ui" }}>
-      <h2 style={{ margin: 0 }}>ASK SANRI</h2>
-      <p style={{ marginTop: 8, opacity: 0.75 }}>
+      <h2>ASK SANRI</h2>
+      <p style={{ opacity: 0.7 }}>
         Sorunu yaz. Enter = gönder, Shift+Enter = alt satır.
       </p>
 
       <div
         style={{
-          marginTop: 16,
-          border: "1px solid rgba(0,0,0,0.12)",
+          border: "1px solid #ddd",
           borderRadius: 12,
           padding: 12,
           height: 420,
           overflow: "auto",
-          background: "white",
+          background: "#fff",
         }}
       >
         {messages.map((msg, i) => (
@@ -88,20 +113,17 @@ export default function AskSanriPage() {
                 whiteSpace: "pre-wrap",
                 padding: "10px 12px",
                 borderRadius: 10,
-                marginTop: 6,
                 background:
                   msg.role === "user"
-                    ? "rgba(0,0,0,0.06)"
-                    : msg.role === "assistant"
-                    ? "rgba(0,0,0,0.03)"
-                    : "rgba(0,0,0,0.02)",
+                    ? "#eee"
+                    : "#f7f7f7",
               }}
             >
               {msg.text}
             </div>
           </div>
         ))}
-        {loading && <div style={{ fontSize: 12, opacity: 0.6, marginTop: 10 }}>Yanıt hazırlanıyor…</div>}
+        {loading && <div>Yanıt hazırlanıyor…</div>}
       </div>
 
       <div style={{ marginTop: 12, display: "flex", gap: 10 }}>
@@ -111,32 +133,14 @@ export default function AskSanriPage() {
           onKeyDown={onKeyDown}
           placeholder="Sorunu buraya yaz…"
           rows={3}
-          style={{
-            flex: 1,
-            padding: 12,
-            borderRadius: 10,
-            border: "1px solid rgba(0,0,0,0.18)",
-            resize: "vertical",
-          }}
+          style={{ flex: 1, padding: 12 }}
         />
         <button
           onClick={handleSend}
           disabled={loading || !input.trim()}
-          style={{
-            width: 120,
-            borderRadius: 10,
-            border: "1px solid rgba(0,0,0,0.18)",
-            background: loading || !input.trim() ? "rgba(0,0,0,0.06)" : "black",
-            color: loading || !input.trim() ? "rgba(0,0,0,0.4)" : "white",
-            cursor: loading || !input.trim() ? "not-allowed" : "pointer",
-          }}
         >
-          {loading ? "…" : "Gönder"}
+          Gönder
         </button>
-      </div>
-
-      <div style={{ marginTop: 10, fontSize: 12, opacity: 0.65 }}>
-        Backend bağlamak için: <code>REACT_APP_API_URL</code> env ekleyip <code>/ask</code> endpoint’i açacağız.
       </div>
     </div>
   );
