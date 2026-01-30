@@ -166,7 +166,7 @@ Sorun: “${q}”`;
         {
           role: "assistant",
           mode: "ayna_sade",
-          text: Hata oldu: ${msg}\n\n(Şimdilik mock moduna devam edebiliriz.),
+          text: 'Hata oldu: ${msg}\n\n(Şimdilik mock moduna devam edebiliriz.)',
           time: nowTime(),
         },
       ]);
