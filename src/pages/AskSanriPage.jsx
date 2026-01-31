@@ -15,8 +15,8 @@ export default function AskSanriPage({ mode }) {
     setMessages((m) => [...m, { role: "user", text: userText }]);
 
     try {
-      const API_BASE = "https://sanri-api-production.up.railway.app";  
-      const res = await fetch('${API_BASE}/ask', {
+      const API_URL = "https://sanri-api-production.up.railway.app";
+      const res = await fetch(${API_URL}/ask, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -31,13 +31,8 @@ export default function AskSanriPage({ mode }) {
         { role: "assistant", text: data.answer },
       ]);
     } catch (err) {
-      setMessages((m) => [
-        ...m,
-        {
-          role: "assistant",
-          text: "Şu an sessizlik var. Bir nefes alıp tekrar sor.",
-        },
-      ]);
+  console.error("ASK ERROR:", err);
+}
     } finally {
       setLoading(false);
     }
