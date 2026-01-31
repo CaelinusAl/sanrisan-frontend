@@ -10,7 +10,6 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar mode={mode} setMode={setMode} />
-
       <Routes>
         <Route path="/" element={<AskSanriPage mode={mode} />} />
       </Routes>
