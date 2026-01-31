@@ -1,59 +1,48 @@
-import { Link } from "react-router-dom";
-import { Separator } from "../ui/separator";
-import { useLanguage } from "../../contexts/LanguageContext";
+import React from "react";
 
-export const Footer = () => {
-  const { language } = useLanguage();
-
-  const footerContent = {
-    tr: {
-      brandDesc:
-        "Anadolu'nun Uyanan Tanrıçaları, kolektif hafızayı uyandıran ve iç yansımayı destekleyen bir alan.",
-      explore: "Keşfet",
-      citiesMap: "81 Şehir Haritası",
-      readingLayers: "Okuma Katmanları",
-      askSanri: "SANRI'ya Sor",
-      aboutBook: "Kitap Hakkında",
-      info: "Bilgi",
-      allRights: "Tüm hakları saklıdır",
-      disclaimer:
-        "Bu uygulama bilgi vermez, anlam üretir; teşhis veya kesinlik sunmaz.",
-    },
-    en: {
-      brandDesc:
-        "Awakening Goddesses of Anatolia, a symbolic experience that awakens collective memory and supports inner reflection.",
-      explore: "Explore",
-      citiesMap: "81 Cities Map",
-      readingLayers: "Reading Layers",
-      askSanri: "Ask SANRI",
-      aboutBook: "About the Book",
-      info: "Info",
-      allRights: "All rights reserved",
-      disclaimer:
-        "This application does not provide facts; it creates meaning and offers no diagnosis or certainty.",
-    },
-  };
-
-  const fc = footerContent[language] || footerContent.tr;
-
+export function Footer() {
   return (
-    <footer className="bg-card/50 border-t">
-      <div className="container mx-auto px-6 py-12">
-        <p className="text-muted-foreground mb-4">{fc.brandDesc}</p>
-
-        <div className="flex gap-4 text-sm">
-          <Link to="/">{fc.explore}</Link>
-          <Link to="/cities">{fc.citiesMap}</Link>
-          <Link to="/reading">{fc.readingLayers}</Link>
-          <Link to="/ask">{fc.askSanri}</Link>
+    <footer
+      style={{
+        marginTop: 22,
+        padding: "18px 16px",
+        borderTop: "1px solid rgba(255,255,255,0.10)",
+        background: "rgba(10,10,16,0.65)",
+        color: "rgba(255,255,255,0.80)",
+        fontFamily: "system-ui",
+      }}
+    >
+      <div style={{ maxWidth: 980, margin: "0 auto" }}>
+        <div style={{ fontSize: 12, lineHeight: 1.6 }}>
+          <b>SANRI</b> bir sembolik farkındalık aynasıdır. Kehanet/teşhis/yargı üretmez.
+          Nihai sorumluluk kullanıcıdadır.
         </div>
 
-        <Separator className="my-6" />
+        <div style={{ marginTop: 12, display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <a href="/docs/Ask-SANRI-Policy.pdf" target="_blank" rel="noreferrer" style={linkStyle}>
+            Policy
+          </a>
+          <a href="/docs/Ask-SANRI-Policy.pdf" target="_blank" rel="noreferrer" style={linkStyle}>
+            Terms
+          </a>
+          <a href="/docs/Ask-SANRI-Policy.pdf" target="_blank" rel="noreferrer" style={linkStyle}>
+            Disclaimer
+          </a>
+        </div>
 
-        <p className="text-xs text-muted-foreground">
-          {fc.allRights} • {fc.disclaimer}
-        </p>
+        <div style={{ marginTop: 10, fontSize: 12, opacity: 0.6 }}>
+          © {new Date().getFullYear()} CaelinusAI • SANRI
+        </div>
       </div>
     </footer>
   );
+}
+
+const linkStyle = {
+  color: "white",
+  textDecoration: "none",
+  padding: "8px 10px",
+  borderRadius: 10,
+  border: "1px solid rgba(255,255,255,0.16)",
+  background: "rgba(0,0,0,0.25)",
 };
